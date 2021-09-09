@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "775276242008",
+    "project_id": "emergram-09871",
+    "storage_bucket": "emergram-09871.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775276242008:android:f688a27adac2f98b3a162d",
+        "android_client_info": {
+          "package_name": "com.sammuiga.emergram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775276242008-f2o0j7g6irqgh8ha20osne7fc3a6fovn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVVsNCfqGGlaF0EYvQKZVQjIqkufAkmgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775276242008-f2o0j7g6irqgh8ha20osne7fc3a6fovn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
