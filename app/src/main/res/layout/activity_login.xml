@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context=".activities.LoginActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fl_header_image"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/auth_header_image_height"
@@ -16,21 +16,34 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/content_description"
             android:scaleType="fitXY"
-            android:src="@drawable/authscreenbackground" />
+            android:src="@drawable/authscreenbackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:layout_width="233dp"
-            android:layout_height="141dp"
-            android:layout_gravity="clip_horizontal|top|end"
+            android:id="@+id/imageView2"
+            android:layout_width="231dp"
+            android:layout_height="269dp"
             android:contentDescription="@string/app_name"
             android:scaleType="fitXY"
-            android:src="@drawable/emergramm" />
+            android:src="@drawable/emergramm"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.sammuiga.emergram.utils.EmerTextViewBold
         android:id="@+id/tv_title"
@@ -62,26 +75,28 @@
         <com.sammuiga.emergram.utils.EmerEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
             android:inputType="text"
             android:padding="@dimen/et_padding"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="#757575"
             android:textColorLink="@color/colorAccent"
             android:textSize="@dimen/et_textSize"
+            tools:ignore="TextContrastCheck"
             tools:text="abc@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="373dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
         android:hint="@string/et_hint_email_password"
         android:textColorHint="@color/colorSecondaryText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/til_email"
+        app:layout_constraintStart_toStartOf="@+id/til_email"
         app:layout_constraintTop_toBottomOf="@id/til_email">
 
         <com.sammuiga.emergram.utils.EmerEditText
@@ -90,8 +105,9 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:padding="@dimen/et_padding"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="#757575"
             android:textSize="@dimen/et_textSize"
+            tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TouchTargetSizeCheck"
             tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,9 +124,11 @@
         android:textColor="#757575"
         android:textSize="@dimen/forgot_password_textSize"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/til_password"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/til_password"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="TouchTargetSizeCheck" />
 
     <com.sammuiga.emergram.utils.EmerButton
@@ -155,7 +173,7 @@
 
         <com.sammuiga.emergram.utils.EmerTextViewBold
             android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:foreground="?attr/selectableItemBackground"
