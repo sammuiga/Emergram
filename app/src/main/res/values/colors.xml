@@ -16,4 +16,7 @@
     <color name="pink">#eab8a8</color>
     <color name="blue">#3366ff</color>
 
+    <color name="colorSnackBarSuccess">#009688</color>
+    <color name="colorSnackBarError">#BF1D1D</color>
+
 </resources>

@@ -49,7 +49,7 @@
         android:id="@+id/tv_title"
         android:layout_width="64dp"
         android:layout_height="32dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="252dp"
         android:text="@string/title_login"
         android:textColor="@color/colorPrimaryText"
         android:textSize="@dimen/title_textSize"
@@ -59,40 +59,11 @@
         app:layout_constraintTop_toTopOf="@id/fl_header_image" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/et_hint_email_id"
-        android:textColorHint="@color/colorSecondaryText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title">
-
-        <com.sammuiga.emergram.utils.EmerEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:gravity="bottom"
-            android:inputType="text"
-            android:padding="@dimen/et_padding"
-            android:textColor="#757575"
-            android:textColorLink="@color/colorAccent"
-            android:textSize="@dimen/et_textSize"
-            tools:ignore="TextContrastCheck"
-            tools:text="abc@gmail.com" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="373dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:hint="@string/et_hint_email_password"
         android:textColorHint="@color/colorSecondaryText"
         app:layout_constraintEnd_toEndOf="@+id/til_email"
@@ -111,33 +82,13 @@
             tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.sammuiga.emergram.utils.EmerTextView
-        android:id="@+id/tv_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="260dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginBottom="53dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/clickable_text_view_padding"
-        android:text="@string/lbl_forgot_password"
-        android:textColor="#757575"
-        android:textSize="@dimen/forgot_password_textSize"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="@+id/til_password"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/til_password"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="TouchTargetSizeCheck" />
-
     <com.sammuiga.emergram.utils.EmerButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="144dp"
         android:background="@drawable/button_background"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
@@ -148,12 +99,13 @@
         android:textSize="@dimen/btn_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,5 +134,55 @@
             android:textColor="#78909C"
             android:textSize="@dimen/lbl_text_view_textSize" />
     </LinearLayout>
+
+    <com.sammuiga.emergram.utils.EmerTextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="53dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="@dimen/clickable_text_view_padding"
+        android:text="@string/lbl_forgot_password"
+        android:textColor="#757575"
+        android:textSize="@dimen/forgot_password_textSize"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="@+id/til_password"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/til_password"
+        app:layout_constraintVertical_bias="0.6"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/et_hint_email_id"
+        android:textColorHint="@color/colorSecondaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <com.sammuiga.emergram.utils.EmerEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:inputType="text"
+            android:padding="@dimen/et_padding"
+            android:textColor="#757575"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="@dimen/et_textSize"
+            tools:ignore="TextContrastCheck"
+            tools:text="abc@gmail.com" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
