@@ -33,4 +33,8 @@
 
     <string name="please_wait">Please Wait&#8230;</string>
 
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your email address</string>
+    <string name="btn_lbl_submit">Submit</string>
+
 </resources>

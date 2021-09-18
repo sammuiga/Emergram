@@ -11,8 +11,14 @@
         android:theme="@style/Theme.Emergram"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".activities.BaseActivity"
+            android:name=".activities.ForgotPasswordActivity"
             android:exported="true" />
+        <activity
+            android:name=".activities.BaseActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:exported="true"
