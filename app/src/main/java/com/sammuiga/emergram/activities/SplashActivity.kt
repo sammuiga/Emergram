@@ -2,11 +2,11 @@ package com.sammuiga.emergram.activities
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.sammuiga.emergram.R
 
 class SplashActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             },
-         3000
+            3000
         )
     }
 }

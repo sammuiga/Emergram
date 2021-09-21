@@ -3,9 +3,9 @@ package com.sammuiga.emergram.utils
 import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatTextView
 
-class EmerTextView(context: Context, attrs: AttributeSet): AppCompatEditText(context, attrs){
+class EmerTextView(context: Context, attrs: AttributeSet): AppCompatTextView(context, attrs){
     init {
         applyFont()
     }

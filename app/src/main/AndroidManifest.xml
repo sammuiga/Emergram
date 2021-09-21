@@ -12,7 +12,10 @@
         tools:ignore="AllowBackup">
         <activity
             android:name=".activities.ForgotPasswordActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.BaseActivity"
             android:exported="true"
