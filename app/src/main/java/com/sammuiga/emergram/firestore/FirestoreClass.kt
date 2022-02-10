@@ -1,13 +1,19 @@
 package com.sammuiga.emergram.firestore
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.sammuiga.emergram.activities.LoginActivity
-import com.sammuiga.emergram.activities.RegisterActivity
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.sammuiga.emergram.models.User
+import com.sammuiga.emergram.ui.activities.LoginActivity
+import com.sammuiga.emergram.ui.activities.RegisterActivity
+import com.sammuiga.emergram.ui.activities.UserProfileActivity
 import com.sammuiga.emergram.utils.Constants
 
 class FirestoreClass {
@@ -36,7 +42,7 @@ class FirestoreClass {
         val currentUser = FirebaseAuth.getInstance().currentUser
 
         var currentUserID = ""
-        if(currentUser != null) {
+        if (currentUser != null) {
             currentUserID = currentUser.uid
         }
         return currentUserID
@@ -52,7 +58,19 @@ class FirestoreClass {
 
                 val user = document.toObject(User::class.java)!!
 
-                when(activity) {
+                val sharedPreferences =
+                    activity.getSharedPreferences(
+                        Constants.EMERGRAM_PREFERENCES,
+                        Context.MODE_PRIVATE
+                    )
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(
+                    Constants.LOGGED_IN_USERNAME,
+                    "${user.firstName} ${user.lastName}"
+                )
+                editor.apply()
+
+                when (activity) {
                     is LoginActivity -> {
                         activity.userLoggedInSuccess(user)
                     }
@@ -60,7 +78,7 @@ class FirestoreClass {
 
             }
             .addOnFailureListener { e ->
-                when(activity) {
+                when (activity) {
                     is LoginActivity -> {
                         activity.hideProgressDialog()
                     }
@@ -69,6 +87,73 @@ class FirestoreClass {
                     activity.javaClass.simpleName,
                     "Error while getting user details",
                     e
+                )
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
+        mFirestore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while updating the user details",
+                    e
+                )
+
+            }
+
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?) {
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(
+                activity,
+                imageFileURI
+            )
+        )
+
+        sRef.putFile(imageFileURI!!).addOnSuccessListener { taskSnapshot ->
+            Log.e(
+                "Firebase Image URL",
+                taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+            )
+
+            taskSnapshot.metadata!!.reference!!.downloadUrl
+                .addOnSuccessListener { uri ->
+                    Log.e("Downloadable Image URL", uri.toString())
+                    when (activity) {
+                        is UserProfileActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
+                    }
+
+                }
+        }
+            .addOnFailureListener { exception ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    exception.message,
+                    exception
                 )
             }
     }

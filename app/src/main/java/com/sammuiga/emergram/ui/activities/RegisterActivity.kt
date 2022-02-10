@@ -1,4 +1,4 @@
-package com.sammuiga.emergram.activities
+package com.sammuiga.emergram.ui.activities
 
 import android.os.Build
 import android.os.Bundle
@@ -121,12 +121,12 @@ class RegisterActivity : BaseActivity() {
 
                             val user = User(
                                 firebaseUser.uid,
-                                et_first_name.text.toString().trim{ it <= ' '},
-                                et_last_name.text.toString().trim{ it <= ' '},
-                                et_email.text.toString().trim{ it <= ' '}
+                                et_first_name.text.toString().trim { it <= ' ' },
+                                et_last_name.text.toString().trim { it <= ' ' },
+                                et_email.text.toString().trim { it <= ' ' }
                             )
 
-                           FirestoreClass().registerUser(this@RegisterActivity, user)
+                            FirestoreClass().registerUser(this@RegisterActivity, user)
 
                             //FirebaseAuth.getInstance().signOut()
                             //finish()

@@ -1,4 +1,4 @@
-package com.sammuiga.emergram.activities
+package com.sammuiga.emergram.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.sammuiga.emergram.R
 import com.sammuiga.emergram.firestore.FirestoreClass
 import com.sammuiga.emergram.models.User
+import com.sammuiga.emergram.utils.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -37,16 +38,24 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun userLoggedInSuccess(user : User) {
+    fun userLoggedInSuccess(user: User) {
 
         hideProgressDialog()
 
-        Log.i("First Name: " , user.firstName)
+        Log.i("First Name: ", user.firstName)
         Log.i("Last Name: ", user.lastName)
         Log.i("Email: ", user.email)
 
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        if (user.profileCompleted == 0) {
+            val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            startActivity(intent)
+        } else {
+            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+        }
         finish()
+
+
     }
 
     override fun onClick(view: View?) {
@@ -95,7 +104,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-
 
 
                     if (task.isSuccessful) {

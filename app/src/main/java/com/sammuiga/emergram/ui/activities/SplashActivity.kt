@@ -1,4 +1,4 @@
-package com.sammuiga.emergram.activities
+package com.sammuiga.emergram.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -25,10 +25,13 @@ class SplashActivity : AppCompatActivity() {
         }
         @Suppress("DEPRECATION")
         Handler().postDelayed(
+            //Remember to change from gmaps activity to LoginActivity: this is only for testing purposes
             {
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             },
+            //  { startActivity(Intent(this@SplashActivity, GmapsActivity::class.java))
+            //   finish() },
             3000
         )
     }

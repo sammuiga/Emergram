@@ -1,4 +1,4 @@
-package com.sammuiga.emergram.activities
+package com.sammuiga.emergram.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

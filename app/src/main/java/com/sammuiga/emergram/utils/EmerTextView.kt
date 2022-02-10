@@ -5,7 +5,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 
-class EmerTextView(context: Context, attrs: AttributeSet): AppCompatTextView(context, attrs){
+class EmerTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
     init {
         applyFont()
     }
